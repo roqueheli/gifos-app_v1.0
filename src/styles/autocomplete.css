@@ -1,0 +1,36 @@
+.autocomplete_container {
+    width: 33rem;
+    height: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #6809E1;
+    position: absolute;
+    top: 468px;
+    background-color: white;
+}
+
+.autocomplete_subcontainer {
+    width: 100%;
+    list-style: none;
+}
+
+.list_subcontainer {
+    display: flex;
+    padding: .5rem;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid silver;
+}
+
+.list_subcontainer button {
+    background-color: transparent;
+    border: none;
+}
+
+.list_subcontainer img {
+    cursor: pointer;
+}
+
+.autocomplete_subcontainer li {
+    margin-left: .3rem;
+}
