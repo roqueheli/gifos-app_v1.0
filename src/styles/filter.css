@@ -91,3 +91,7 @@
 .night_mode input {
     color: #fff;
 }
+
+form {
+    border: none;
+}

@@ -29,6 +29,16 @@
     border-top: 0px;
     height: 26rem;
     overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.noresults_subcontainer h1 {
+    position: absolute;
+    top: 56rem;
+    padding: 5rem;
+    font-size: 1.2rem;
+    color: #6809E1;
 }
 
 .night_mode .results_subcontainer {

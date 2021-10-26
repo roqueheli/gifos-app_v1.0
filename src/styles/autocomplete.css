@@ -34,3 +34,7 @@
 .autocomplete_subcontainer li {
     margin-left: .3rem;
 }
+
+.button_container {
+    display: flex;
+}

@@ -5,14 +5,14 @@ import "../styles/autocomplete.css";
 
 function AutoComplete() {
   const { setButtonUpdate } = useContext(ButtonContext);
-  const { filter, setFilterUpdate } = useContext(FilterContext);
+  const { setFilterUpdate } = useContext(FilterContext);
   const { autocomplete } = useContext(AutoCompleteContext);
   
 
   const setClick = (e) => {
     e.preventDefault();
     setButtonUpdate(true);
-    setFilterUpdate(filter);
+    setFilterUpdate(e.target.innerText);
   };
 
   return (
@@ -23,10 +23,8 @@ function AutoComplete() {
             {autocomplete.map((data, index) => {
               return (
                 <div key={index} className="list_subcontainer">
-                  <button onClick={setClick}>
                     <img src="../../assets/icons/icon-search.svg" alt="search-icon" />
-                  </button>
-                  <li>{data.name}</li>
+                    <li onClick={setClick}>{data.name}</li>
                 </div>
               );
             })}
