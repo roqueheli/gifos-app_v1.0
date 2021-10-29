@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "../components/Header";
-import Filter from "../components/Filter";
-import Results from "../components/Results";
+import Header from "../components/header/Header";
+import Filter from "../components/navigation/Filter";
+import Results from "../components/main/Results";
+import Footer from "../components/footer/Footer";
 import FilterProvider from "../context/filterContext";
 import ResultsProvider from "../context/resultsContext";
 import AutoCompleteProvider from "../context/autocompleteContext";
-import "../App.css";
+import "../styles/App.css";
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
           </AutoCompleteProvider>
         </ResultsProvider>
       </FilterProvider>
+      <Footer />
     </div>
   );
 }

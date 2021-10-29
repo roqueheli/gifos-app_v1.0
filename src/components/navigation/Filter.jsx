@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import "../styles/filter.css";
-import { make } from "../helpers/variables";
-import { ModeContext } from '../context/modeContext';
-import { FilterContext, ButtonContext } from '../context/filterContext';
-import { ResultsContext } from "../context/resultsContext";
-import AutoComplete from "./AutoComplete";
+import "../../styles/filter.css";
+import { make } from "../../helpers/variables";
+import { ModeContext } from '../../context/modeContext';
+import { FilterContext, ButtonContext } from '../../context/filterContext';
+import { ResultsContext } from "../../context/resultsContext";
+import AutoComplete from "../navigation/AutoComplete";
 
 const Search = () => {
     const { mode } = useContext(ModeContext);
@@ -26,7 +26,7 @@ const Search = () => {
     }
 
     return (
-        <>
+        <nav className="submit_container">
             <form className="submit_container" autoComplete="off">
                 <div className="search_container">
                     <input onChange={setFilterValue} className={mode ? "night_mode" : "day_mode"} type="search" name="search" id="search" placeholder="Buscar Gif" />
@@ -36,7 +36,7 @@ const Search = () => {
                 </div>
             </form>
             {(filter.length > 0 && button === false) ? <AutoComplete /> : null}
-        </>
+        </nav>
     );
 }
 

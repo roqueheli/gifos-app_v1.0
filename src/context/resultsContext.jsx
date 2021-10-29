@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { FilterContext, ButtonContext } from "../context/filterContext";
-import { urlTrending, urlSearch, apiKey, qty } from "../helpers/variables";
+import { urlTrending, urlSearch, urlAutoComplete, apiKey, autoQty, qty } from "../helpers/variables";
 
 export const ResultsContext = createContext();
 
@@ -11,8 +11,7 @@ export default function ResultsProvider({ children }) {
 
   //Cargar los primeros gifs
   useEffect(() => {
-    if (
-      (filter === "" || filter === undefined || filter === null) && button === false ) {
+    if ((filter === "" || filter === undefined || filter === null) && button === false ) {
       try {
         (async () => {
           const res = await fetch(`${urlTrending}?api_key=${apiKey}&limit=${qty}&rating=g&lang=en`);
@@ -24,6 +23,21 @@ export default function ResultsProvider({ children }) {
       }
     }
   });
+
+  //Cargar los gifs de autocompletar
+  useEffect(() => {
+    if ((filter !== "" && filter !== undefined && filter !== null) && button === false ) {
+      try {
+        (async () => {
+          const res = await fetch(`${urlAutoComplete}?api_key=${apiKey}&q=(${filter})&limit=${autoQty}&offset=0&rating=g&lang=en`);
+          const data = await res.json();
+          setResults(data.data);
+        })();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [filter, button]);
 
   //carga los gifs de la búsqueda
   useEffect(() => {

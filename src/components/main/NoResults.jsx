@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ModeContext } from "../context/modeContext";
-import "../styles/results.css";
+import { ModeContext } from "../../context/modeContext";
+import "../../styles/results.css";
 
 const NoResults = () => {
   const { mode } = useContext(ModeContext);
