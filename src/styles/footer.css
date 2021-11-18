@@ -1,0 +1,32 @@
+.footer_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_subcontainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 55%;
+    border-bottom: none;
+    border-top: none;
+    color: #fff;
+    padding: 1rem;
+}
+
+.day_mode {
+    color: lightgrey;
+}
+
+.iconos_footer {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+}
+
+.iconos_footer a:hover {
+    color: lightgrey;
+}
