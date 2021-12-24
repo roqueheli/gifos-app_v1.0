@@ -57,6 +57,10 @@
     justify-content: center;
 }
 
+.submit_container input {
+    outline: 0;
+}
+
 .search_container input {
     border-radius: 61px 0px 0px 61px;
     border: 1px solid lightgrey;

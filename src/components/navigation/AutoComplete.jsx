@@ -1,30 +1,44 @@
 import React, { useContext } from "react";
+import { AutoCompleteContext } from "../../context/autocompleteContext";
 import { ResultsContext } from "../../context/resultsContext";
-import { FilterContext, ButtonContext } from "../../context/filterContext";
+import { FilterContext } from "../../context/filterContext";
+import { urlSearch, apiKey, qty } from "../../helpers/variables";
 import "../../styles/autocomplete.css";
 
 function AutoComplete() {
-  const { setButtonUpdate } = useContext(ButtonContext);
-  const { setFilterUpdate } = useContext(FilterContext);
-  const { results } = useContext(ResultsContext);
+  const { filter, setFilterUpdate } = useContext(FilterContext);
+  const { autocomplete, setAutoComplete } = useContext(AutoCompleteContext);
+  const { setLoading, setResults } = useContext(ResultsContext);
 
-  const setClick = (e) => {
-    e.preventDefault();
-    setButtonUpdate(true);
-    console.log(e.target.innerText);
-    setFilterUpdate(e.target.innerText);
-  };
+
+  //carga los gifs de la búsqueda
+  const handleAutoComplete = (name) => {
+    if (name) {
+      try {
+        (async () => {
+          console.log(name);
+          const res = await fetch(`${urlSearch}?api_key=${apiKey}&q=(encodeURI(${name}))&limit=${qty}&offset=0&rating=g&lang=en`);
+          const data = await res.json();
+          setResults(data.data);
+          setAutoComplete([]);
+          setFilterUpdate('');
+          setLoading(true);
+      })();
+      } catch (e) {
+      }
+    }
+  }
 
   return (
     <>
-      {results.length > 0 ? (
+      {filter.length > 0 ? (
         <div className="autocomplete_container">
           <ul className="autocomplete_subcontainer">
-            {results.map((data, index) => {
+            {autocomplete.map((data, index) => {
               return (
                 <div key={index} className="list_subcontainer">
-                    <img src="../../assets/icons/icon-search.svg" alt="search-icon" />
-                    <li onClick={setClick}>{data.name}</li>
+                    <img onClick={() => handleAutoComplete(data.name)} src="../../assets/icons/icon-search.svg" alt="search-icon" />
+                    <li>{data.name}</li>
                 </div>
               );
             })}
