@@ -19,7 +19,7 @@ function AutoComplete() {
           const data = await res.json();
           setResults(data.data);
           setAutoComplete([]);
-          setFilterUpdate('');
+          setFilterUpdate(name);
           setLoading(true);
       })();
       } catch (e) {

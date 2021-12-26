@@ -40,7 +40,7 @@ const Search = () => {
                 const data = await res.json();
                 setResults(data.data);
                 setAutoComplete([]);
-                setFilterUpdate('');
+                // setFilterUpdate('');
                 setLoading(true);
             })();
             } catch (e) {
@@ -56,7 +56,7 @@ const Search = () => {
         <nav className="submit_container">
             <form onSubmit={handleSearch} className="submit_container" autoComplete="off">
                 <div className="search_container">
-                    <input value={filter} onChange={handleFilterValue} className={mode ? "night_mode" : "day_mode"} type="text" placeholder="Buscar Gif" />
+                    <input value={filter} onChange={handleFilterValue} className={mode ? "night_mode" : "day_mode"} type="search" placeholder="Buscar Gif" />
                     <button className="btn">
                         <img className="search_img" src="/assets/icons/icon-search-mod-noc.svg" alt="icon-search" />
                     </button>
