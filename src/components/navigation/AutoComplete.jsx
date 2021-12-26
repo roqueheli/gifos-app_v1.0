@@ -10,13 +10,11 @@ function AutoComplete() {
   const { autocomplete, setAutoComplete } = useContext(AutoCompleteContext);
   const { setLoading, setResults } = useContext(ResultsContext);
 
-
   //carga los gifs de la búsqueda
   const handleAutoComplete = (name) => {
     if (name) {
       try {
         (async () => {
-          console.log(name);
           const res = await fetch(`${urlSearch}?api_key=${apiKey}&q=(encodeURI(${name}))&limit=${qty}&offset=0&rating=g&lang=en`);
           const data = await res.json();
           setResults(data.data);

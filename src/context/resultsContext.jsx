@@ -1,5 +1,4 @@
-import React, { useState, createContext, useEffect, useContext } from "react";
-import { FilterContext } from "./filterContext";
+import React, { useState, createContext, useEffect } from "react";
 import { urlTrending, apiKey, qty } from "../helpers/variables";
 
 export const ResultsContext = createContext();
@@ -7,7 +6,6 @@ export const ResultsContext = createContext();
 export default function ResultsProvider({ children }) {
   const [ results, setResults ] = useState([]);
   const [ loading, setLoading ] = useState(false);
-  const { filter } = useContext(FilterContext);
 
   //Cargar los primeros gifs
   useEffect(() => {

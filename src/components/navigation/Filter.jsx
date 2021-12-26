@@ -3,13 +3,13 @@ import { make } from "../../helpers/variables";
 import { ModeContext } from '../../context/modeContext';
 import { FilterContext } from '../../context/filterContext';
 import { ResultsContext } from "../../context/resultsContext";
-import AutoComplete from "../navigation/AutoComplete";
 import { urlSearch, apiKey, qty } from "../../helpers/variables";
-import "../../styles/filter.css";
 import { AutoCompleteContext } from "../../context/autocompleteContext";
+import AutoComplete from "../navigation/AutoComplete";
+import "../../styles/filter.css";
 
 const Filter = () => {
-    const { mode }    = useContext(ModeContext);
+    const { mode } = useContext(ModeContext);
     const { results } = useContext(ResultsContext);
 
     return (
@@ -54,11 +54,11 @@ const Search = () => {
 
     return (
         <nav className="submit_container">
-            <form className="submit_container" autoComplete="off">
+            <form onSubmit={handleSearch} className="submit_container" autoComplete="off">
                 <div className="search_container">
-                    <input onChange={handleFilterValue} className={mode ? "night_mode" : "day_mode"} type="search" name="search" id="search" placeholder="Buscar Gif" />
+                    <input value={filter} onChange={handleFilterValue} className={mode ? "night_mode" : "day_mode"} type="text" placeholder="Buscar Gif" />
                     <button className="btn">
-                        <img onClick={handleSearch} className="search_img" src="/assets/icons/icon-search-mod-noc.svg" alt="icon-search" />
+                        <img className="search_img" src="/assets/icons/icon-search-mod-noc.svg" alt="icon-search" />
                     </button>
                 </div>
             </form>

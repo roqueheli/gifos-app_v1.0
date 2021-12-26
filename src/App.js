@@ -6,12 +6,10 @@ import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-      <>
-        <Switch>
-          <Route exact path="/" component={Main} />
-          <Route path='/' component={NotFound} />
-        </Switch>
-      </>
+    <Switch>
+      <Route exact path='/' component={Main} />
+      <Route path='/' component={NotFound} />
+    </Switch>
   );
 }
 

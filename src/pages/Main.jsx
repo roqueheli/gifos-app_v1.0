@@ -11,10 +11,10 @@ import "../styles/App.css";
 function Main() {
   return (
     <div className="App">
-      <Header />
       <FilterProvider>
         <ResultsProvider>
           <AutoCompleteProvider>
+            <Header />
             <Filter />
             <Results />
           </AutoCompleteProvider>
