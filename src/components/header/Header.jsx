@@ -35,7 +35,7 @@ import "../../styles/header.css";
     }
   } 
 
-    return (
+  return (
     <header className={mode ? "header_container night_mode" : "header_container day_mode"}>
       <div className="head_header" />
         <div className={mode ? "head_work night_mode" : "head_work day_mode"}>
