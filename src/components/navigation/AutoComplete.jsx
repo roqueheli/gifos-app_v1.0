@@ -15,11 +15,13 @@ function AutoComplete() {
     if (name) {
       try {
         (async () => {
+          setLoading(false);
+          setResults([]);
           const res = await fetch(`${urlSearch}?api_key=${apiKey}&q=(encodeURI(${name}))&limit=${qty}&offset=0&rating=g&lang=en`);
           const data = await res.json();
           setResults(data.data);
           setAutoComplete([]);
-          setFilterUpdate(name);
+          setFilterUpdate('');
           setLoading(true);
       })();
       } catch (e) {
@@ -29,7 +31,7 @@ function AutoComplete() {
 
   return (
     <>
-      {filter.length > 0 ? (
+      {filter.length > 0 && autocomplete.length > 0 ? (
         <div className="autocomplete_container">
           <ul className="autocomplete_subcontainer">
             {autocomplete.map((data, index) => {

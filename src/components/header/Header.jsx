@@ -22,6 +22,8 @@ import "../../styles/header.css";
       e.preventDefault();
       try {
         (async () => {
+          setLoading(false);
+          setResults([]);
           const res = await fetch(`${urlTrending}?api_key=${apiKey}&limit=${qty}&rating=g&lang=en`);
           const data = await res.json();
           setResults(data.data);
